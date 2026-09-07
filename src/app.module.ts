@@ -5,9 +5,19 @@ import { ServicesModule } from './services/services.module';
 import { SolutionsModule } from './solutions/solutions.module';
 import { SubscriptionsModule } from './subscriptions/subscriptions.module';
 import { UsersModule } from './users/users.module';
-
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
-  imports: [ServicesModule, SolutionsModule, SubscriptionsModule, UsersModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_HOST, 
+      port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD, 
+      database: process.env.DB_NAME,
+    }), 
+    ServicesModule, SolutionsModule, SubscriptionsModule, UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })

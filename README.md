@@ -1,4 +1,4 @@
-# # Details and requirements
+# Details and requirements
 
 - user can request a report for market analysis “services”. I guess at first it will be sended on mail.
 - user can request tool to download or use it on the website even if it or another website i own it ,so  i redirect him to it.
@@ -11,6 +11,8 @@
 - services
 - solutions
 - subscriptions
+
+
 
 ### Backend
 
@@ -45,15 +47,61 @@
   - gemini api
 
 ## phase 2: connect Database
-#### -Make Tables:
-###### *solutions
-###### *subscriptions
-###### *Users
-###### *Services
+### -Make Tables:
+- solutions
+- subscriptions
+- Users
+- Services
+### Details About Tables
 
+1. Users Table
+
+Stores the core authentication and profile information for individuals or 
+- accounts.user_id (Primary Key): Unique identifier (e.g., UUID or Auto-increment INT).
+- email: Used for login and communication;must be unique and indexed.
+- password_hash: Securely salted and hashed password string
+- status: Account state (eg., Active, Suspended, Pending Verification)
+- created_at / updated_at: Timestamps for account auditing
+ 
+2. Services Table
+
+ Defines the individual atomic offerings, features, or technical components available
+ - service_id (Primary Key): Unique identifier for the service
+ - name: The display name of the service (eg, "Cloud Storage", "API Access")
+ - code / sku: A unique string code used for programmatic identification
+ - status: Availability state (eg, Active, Deprecated, Beta)
+ - base_price: Cost of the service if sold standalone
+ 
+3. Solutions Table
+
+ Represents bundled services, tiers, or packages tailored for specific customer segments (eg, "Enterprise Bundle", "Starter Pack")
+ solution_id (Primary Key): Unique identifier for the bundle
+ - name: Name of the tier or package
+ - billing_cycle: How often it is billed (eg, Monthly, Annual)
+ - price: The total cost of the solution package
+ - status: Marketing state (eg, Active, Archived)
+ Note: A junction table (solution_services) is typically required to map which multiple service_ids belong to a solution_id
+
+4. Subscriptions Table
+
+ The critical transactional table linking a user to the solution or service they purchased.
+ - subscription_id (Primary Key): Unique identifier for the contract
+ - user_id (Foreign Key): Links to the Users table
+ - solution_id / service_id (Foreign Key): Links to what the user purchased
+ - status: Current billing lifecycle state (eg, Active, Past Due, Canceled, Trial)
+ - start_date: When the current subscription tier began
+ end_date: The expiration or next renewal date
+ - payment_gateway_customer_id: Reference token for - payment processors like Stripe or PayPal
+ 
 ## phase 3:create Users
 #### -admin
 #### -users
+
+## phase 3
+1: login & signup
+ - signup
+ - signin
+ - delete user
 
 ## phase 4:create Solutions
    - download apps exe
@@ -67,11 +115,10 @@
  - enable users to get subscribtions
 
 ## phase 7:Make first payment
- connect it to paymob
- Make the first payment
+ * connect it to paymob
+ * Make the first payment
 
 ## phase 8: connect to Ai if possible 
-- connect to gemini 
- & i have no plan to enter ai 
- - may be a chatbot helps the users to get what they want
+- connect to gemini & i have no plan to enter ai 
+- may be a chatbot helps the users to get what they want
 
