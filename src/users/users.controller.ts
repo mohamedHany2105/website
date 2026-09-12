@@ -8,13 +8,16 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto) {
+    return {
+      message: 'User created successfully',
+      data: await this.usersService.createUser(createUserDto),
+    }
   }
 
   @Get()
   findAll() {
-    return this.usersService.findAll();
+    return this.usersService.findAllUsers();
   }
 
   @Get(':id')
@@ -31,4 +34,6 @@ export class UsersController {
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
   }
+
+
 }

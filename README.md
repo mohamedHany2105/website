@@ -98,13 +98,25 @@ Stores the core authentication and profile information for individuals or
 ## phase 3:create Users
 #### -admin
 #### -users
+#### -superAdmins
 
 ## phase 3
 1: login & signup
  - signup
  - signin
  - delete user
+ - block user
+ - escalate user
+## phase 3.2
+ - add authenticatiosn
 
+## phase 3.3
+ - add autherizations
+## phase 3.4
+- add guards
+
+## phase 3.5
+- make the rules work
 ## phase 4:create Solutions
    - download apps exe
    - saas tools ( may be on diffrent websites)
