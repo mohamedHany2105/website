@@ -93,6 +93,8 @@ Stores the core authentication and profile information for individuals or
  end_date: The expiration or next renewal date
  - payment_gateway_customer_id: Reference token for - payment processors like Stripe or PayPal
  
+## phase 2.1:Make the tables in the Entities
+
 ## phase 3:create Users
 #### -admin
 #### -users
@@ -122,3 +124,4 @@ Stores the core authentication and profile information for individuals or
 - connect to gemini & i have no plan to enter ai 
 - may be a chatbot helps the users to get what they want
 
+# i delte the solution section because i have no plan for it for now but futurely i will look for a way to deploy it . if the project run and get returns.
