@@ -124,6 +124,11 @@ Stores the core authentication and profile information for individuals or
 ## phase 5:create services
  - send pdf's 
  - sends data
+## phase 5.1 : create rules access
+
+## phase 5.2: authentication and autherization guards on services
+
+## phase 5.3 : guards on services
 
 ## phase 6:create subscriptions
  - enable users to get subscribtions
